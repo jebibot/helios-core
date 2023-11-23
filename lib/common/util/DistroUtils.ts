@@ -1,4 +1,4 @@
-import { Server } from 'helios-distribution-types'
+import { Server } from '@jebibot/helios-distribution-types'
 
 export function getMainServer(servers: Server[]): Server {
 

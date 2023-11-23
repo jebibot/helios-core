@@ -1,4 +1,4 @@
-import { Distribution, Server, Module, Type, Required as HeliosRequired, JavaVersionProps, JavaPlatformOptions, Platform, JdkDistribution } from 'helios-distribution-types'
+import { Distribution, Server, Module, Type, Required as HeliosRequired, JavaVersionProps, JavaPlatformOptions, Platform, JdkDistribution } from '@jebibot/helios-distribution-types'
 import { MavenComponents, MavenUtil } from '../util/MavenUtil'
 import { join } from 'path'
 import { LoggerUtil } from '../../util/LoggerUtil'
