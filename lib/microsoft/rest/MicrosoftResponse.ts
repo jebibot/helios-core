@@ -57,28 +57,28 @@ export function microsoftErrorDisplayable(errorCode: MicrosoftErrorCode): Displa
     switch(errorCode) {
         case MicrosoftErrorCode.NO_PROFILE:
             return {
-                title: 'Error During Login:<br>Profile Not Set Up',
-                desc: 'Your Microsoft account does not yet have a Minecraft profile set up. If you have recently purchased the game or redeemed it through Xbox Game Pass, you have to set up your profile on <a href="https://minecraft.net/">Minecraft.net</a>.<br><br>If you have not yet purchased the game, you can also do that on <a href="https://minecraft.net/">Minecraft.net</a>.'
+                title: '로그인 중 오류:<br>프로필이 설정되지 않음',
+                desc: 'Microsoft 계정에 아직 Minecraft 프로필이 설정되어 있지 않습니다. 최근에 게임을 구매했거나 Xbox Game Pass를 통해 게임을 교환한 경우, <a href="https://minecraft.net/">Minecraft.net</a>에서 프로필을 설정해야 합니다.<br><br>이미 프로필이 있으신 경우, <a href="https://minecraft.net/login">Minecraft.net</a>에서 로그인 후 다시 시도해 보세요.'
             }
         case MicrosoftErrorCode.NO_XBOX_ACCOUNT:
             return {
-                title: 'Error During Login:<br>No Xbox Account',
-                desc: 'Your Microsoft account has no Xbox account associated with it.'
+                title: '로그인 중 오류:<br> Xbox 계정이 없음',
+                desc: 'Microsoft 계정에 연결된 Xbox 계정이 없습니다.'
             }
         case MicrosoftErrorCode.XBL_BANNED:
             return {
-                title: 'Error During Login:<br>Xbox Live Unavailable',
-                desc: 'Your Microsoft account is from a country where Xbox Live is not available or banned.'
+                title: '로그인 중 오류:<br>Xbox Live를 사용할 수 없음',
+                desc: 'Xbox Live를 사용할 수 없거나 금지된 국가의 Microsoft 계정입니다.'
             }
         case MicrosoftErrorCode.UNDER_18:
             return {
-                title: 'Error During Login:<br>Parental Approval Required',
-                desc: 'Accounts for users under the age of 18 must be added to a Family by an adult.'
+                title: '로그인 중 오류 :<br>보호자 동의 필요',
+                desc: '만 18세 미만 사용자의 계정은 성인이 가족에 추가해야 합니다.'
             }
         case MicrosoftErrorCode.UNKNOWN:
             return {
-                title: 'Unknown Error During Login',
-                desc: 'An unknown error has occurred. Please see the console for details.'
+                title: '로그인 중 오류',
+                desc: '알 수 없는 오류가 발생했습니다. 관리자에게 문의 부탁드립니다.'
             }
     }
 }
