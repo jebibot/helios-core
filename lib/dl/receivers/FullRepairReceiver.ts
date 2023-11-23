@@ -78,18 +78,18 @@ export class FullRepairReceiver implements Receiver {
                 log.debug('Body:', error.response.body)
                 log.debug('Headers:', error.response.headers)
 
-                return `Error during request (HTTP Response ${error.response.statusCode})`
+                return `요청 중 오류 (HTTP 응답 ${error.response.statusCode})`
             } else if(error.name === 'RequestError') {
-                return `Request received no response (${error.code}).`
+                return `응답 없음 (${error.code}).`
             } else if(error instanceof TimeoutError) {
-                return `Request timed out (${error.timings.phases.total}ms).`
+                return `요청 시간 초과 (${error.timings.phases.total}ms).`
             } else if(error instanceof ParseError) {
-                return 'Request received unexepected body (Parse Error).'
+                return '예상치 못한 응답 (분석 오류).'
             } else if(error instanceof ReadError) {
-                return `Read Error (${error.code}): ${error.message}.`
+                return `읽기 오류 (${error.code}): ${error.message}.`
             } else {
                 // CacheError, MaxRedirectsError, UnsupportedProtocolError, CancelError
-                return 'Error during request.'
+                return '요청 중 오류.'
             }
         } else {
             return undefined
