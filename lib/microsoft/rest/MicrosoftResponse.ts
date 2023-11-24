@@ -43,6 +43,15 @@ export enum MicrosoftErrorCode {
     /**
      * XSTS Error
      * 
+     * The account needs adult verification on Xbox page.
+     * 
+     * @see https://wiki.vg/Microsoft_Authentication_Scheme#Authenticate_with_XSTS
+     */
+    NEEDS_VERIFICATION_1 = 2148916236,
+    NEEDS_VERIFICATION_2 = 2148916237,
+    /**
+     * XSTS Error
+     * 
      * The account is a child (under 18) and cannot proceed unless the account
      * is added to a Family by an adult. This only seems to occur when using a
      * custom Microsoft Azure application. When using the Minecraft launchers
@@ -58,22 +67,28 @@ export function microsoftErrorDisplayable(errorCode: MicrosoftErrorCode): Displa
         case MicrosoftErrorCode.NO_PROFILE:
             return {
                 title: '로그인 중 오류:<br>프로필이 설정되지 않음',
-                desc: 'Microsoft 계정에 아직 Minecraft 프로필이 설정되어 있지 않습니다. 최근에 게임을 구매했거나 Xbox Game Pass를 통해 게임을 교환한 경우, <a href="https://minecraft.net/">Minecraft.net</a>에서 프로필을 설정해야 합니다.<br><br>이미 프로필이 있으신 경우, <a href="https://minecraft.net/login">Minecraft.net</a>에서 로그인 후 다시 시도해 보세요.'
+                desc: 'Microsoft 계정에 아직 Minecraft 프로필이 설정되어 있지 않습니다. 최근에 게임을 구매했거나 Xbox Game Pass를 통해 게임을 교환한 경우, <a href="https://minecraft.net/">Minecraft.net</a>에서 프로필을 생성해야 합니다.<br><br>이미 계정이 있으신 경우, <a href="https://minecraft.net/login">Minecraft.net</a>에서 로그인 후 다시 시도해 보세요.'
             }
         case MicrosoftErrorCode.NO_XBOX_ACCOUNT:
             return {
                 title: '로그인 중 오류:<br> Xbox 계정이 없음',
-                desc: 'Microsoft 계정에 연결된 Xbox 계정이 없습니다.'
+                desc: 'Microsoft 계정에 연결된 Xbox 계정이 없습니다. <a href="https://minecraft.net/">Minecraft.net</a>에서 프로필을 생성해 주세요.'
             }
         case MicrosoftErrorCode.XBL_BANNED:
             return {
                 title: '로그인 중 오류:<br>Xbox Live를 사용할 수 없음',
                 desc: 'Xbox Live를 사용할 수 없거나 금지된 국가의 Microsoft 계정입니다.'
             }
+        case MicrosoftErrorCode.NEEDS_VERIFICATION_1:
+        case MicrosoftErrorCode.NEEDS_VERIFICATION_2:
+            return {
+                title: '로그인 중 오류 :<br>나이 확인 필요',
+                desc: '<a href="https://account.xbox.com/koreanageverification">account.xbox.com</a>에서 나이 확인이 필요합니다.'
+            }
         case MicrosoftErrorCode.UNDER_18:
             return {
                 title: '로그인 중 오류 :<br>보호자 동의 필요',
-                desc: '만 18세 미만 사용자의 계정은 성인이 가족에 추가해야 합니다.'
+                desc: '만 18세 미만 사용자의 계정은 <a href="https://account.microsoft.com/family/home/addmember">account.microsoft.com</a>에서 성인이 가족 그룹에 추가해야 합니다.'
             }
         case MicrosoftErrorCode.UNKNOWN:
             return {
@@ -103,6 +118,10 @@ export function decipherErrorCode(body: any): MicrosoftErrorCode {
                     return MicrosoftErrorCode.NO_XBOX_ACCOUNT
                 case MicrosoftErrorCode.XBL_BANNED:
                     return MicrosoftErrorCode.XBL_BANNED
+                case MicrosoftErrorCode.NEEDS_VERIFICATION_1:
+                    return MicrosoftErrorCode.NEEDS_VERIFICATION_1
+                case MicrosoftErrorCode.NEEDS_VERIFICATION_2:
+                    return MicrosoftErrorCode.NEEDS_VERIFICATION_2
                 case MicrosoftErrorCode.UNDER_18:
                     return MicrosoftErrorCode.UNDER_18
             }
