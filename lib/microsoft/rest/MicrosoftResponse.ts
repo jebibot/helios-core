@@ -43,6 +43,15 @@ export enum MicrosoftErrorCode {
     /**
      * XSTS Error
      * 
+     * The account needs adult verification on Xbox page.
+     * 
+     * @see https://wiki.vg/Microsoft_Authentication_Scheme#Authenticate_with_XSTS
+     */
+    NEEDS_VERIFICATION_1 = 2148916236,
+    NEEDS_VERIFICATION_2 = 2148916237,
+    /**
+     * XSTS Error
+     * 
      * The account is a child (under 18) and cannot proceed unless the account
      * is added to a Family by an adult. This only seems to occur when using a
      * custom Microsoft Azure application. When using the Minecraft launchers
@@ -73,6 +82,10 @@ export function decipherErrorCode(body: any): MicrosoftErrorCode {
                     return MicrosoftErrorCode.NO_XBOX_ACCOUNT
                 case MicrosoftErrorCode.XBL_BANNED:
                     return MicrosoftErrorCode.XBL_BANNED
+                case MicrosoftErrorCode.NEEDS_VERIFICATION_1:
+                    return MicrosoftErrorCode.NEEDS_VERIFICATION_1
+                case MicrosoftErrorCode.NEEDS_VERIFICATION_2:
+                    return MicrosoftErrorCode.NEEDS_VERIFICATION_2
                 case MicrosoftErrorCode.UNDER_18:
                     return MicrosoftErrorCode.UNDER_18
             }
