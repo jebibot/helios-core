@@ -1,4 +1,4 @@
-import { Distribution, Server, Module, Type, Required as HeliosRequired, JavaVersionProps, JavaPlatformOptions, Platform, JdkDistribution } from '@jebibot/helios-distribution-types'
+import { Distribution, Server, Module, Type, Required as HeliosRequired, JavaVersionProps, JavaPlatformOptions, Platform, JdkDistribution } from 'helios-distribution-types'
 import { MavenComponents, MavenUtil } from '../util/MavenUtil'
 import { join } from 'path'
 import { LoggerUtil } from '../../util/LoggerUtil'
@@ -225,9 +225,10 @@ export class HeliosModule {
                 return join(commonDir, 'libraries', relativePath)
             case Type.ForgeMod:
             case Type.LiteMod:
+                // TODO Move to /mods/forge eventually..
                 return join(commonDir, 'modstore', relativePath)
             case Type.FabricMod:
-                return join(commonDir, 'fabricmodstore', relativePath)
+                return join(commonDir, 'mods', 'fabric', relativePath)
             case Type.File:
             default:
                 return join(instanceDir, this.serverId, relativePath) 
