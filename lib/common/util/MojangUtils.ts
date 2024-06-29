@@ -49,5 +49,8 @@ export function isLibraryCompatible(rules?: Rule[], natives?: Natives): boolean 
  * @param {string} actual The actual version.
  */
 export function mcVersionAtLeast(desired: string, actual: string): boolean {
+    if (actual.split('.').length === 2) {
+        actual += '.0'
+    }
     return semver.satisfies(actual, `>=${desired}`)
 }
