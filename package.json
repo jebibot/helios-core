@@ -1,6 +1,6 @@
 {
   "name": "@jebibot/helios-core",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "A library containing core mechanisms for Helios Launcher",
   "main": "dist/index.js",
   "scripts": {
