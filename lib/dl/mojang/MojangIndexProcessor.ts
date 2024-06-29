@@ -99,13 +99,13 @@ export class MojangIndexProcessor extends IndexProcessor {
                 const latestVersionJsonPath = getVersionJsonPath(this.commonDir, latestVersion)
                 const latestVersionInfo = versionManifest.versions.find(({ id }) => id === latestVersion)
                 if(latestVersionInfo == null) {
-                    throw new AssetGuardError(`Cannot find the latest version.`)
+                    throw new AssetGuardError('Cannot find the latest version.')
                 }
                 const latestVersionJson = await this.loadContentWithRemoteFallback<VersionJsonBase>(latestVersionInfo.url, latestVersionJsonPath, { algo: HashAlgo.SHA1, value: latestVersionInfo.sha1 })
                 if(latestVersionJson == null) {
                     throw new AssetGuardError(`Failed to download ${latestVersion} json index.`)
                 }
-                versionJson.libraries = versionJson.libraries.filter(l => !l.name.startsWith("org.lwjgl:")).concat(latestVersionJson.libraries.filter(l => l.name.startsWith("org.lwjgl:")))
+                versionJson.libraries = versionJson.libraries.filter(l => !l.name.startsWith('org.lwjgl:')).concat(latestVersionJson.libraries.filter(l => l.name.startsWith('org.lwjgl:')))
             }
 
             return versionJson
